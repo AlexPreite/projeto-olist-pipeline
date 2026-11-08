@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do projeto
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Instalar Poetry
+        run: pipx install poetry
+
+      - name: Instalar dependências
+        run: poetry install
+
+      - name: Obter dados de teste
+        run: |
+          git clone --depth 1 https://github.com/ckoliveiraa/pipeline-olist.git dados-curso
+          mv dados-curso/raw ./raw
+          rm -rf dados-curso
+
+      - name: Executar pipeline
+        run: |
+          poetry run python -m pipeline.ingestao
+          poetry run python -m pipeline.transformacao
+          poetry run python -m pipeline.marts
+
+      - name: Ruff
+        run: poetry run ruff check pipeline ui.py app.py tests
+
+      - name: Testes
+        run: poetry run pytest -q

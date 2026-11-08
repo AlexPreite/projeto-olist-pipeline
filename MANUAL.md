@@ -283,7 +283,15 @@ Os testes confirmam que:
 - as camadas existem;
 - as contagens de `raw` e `refined` estão preservadas;
 - todas as colunas de `raw` são `VARCHAR`;
-- o mart principal não está vazio.
+- as chaves primárias não se repetem;
+- as chaves estrangeiras não possuem órfãos;
+- datas e valores da camada `refined` possuem os tipos esperados;
+- os marts possuem colunas de contrato, dados e regras válidas.
+
+A mesma verificação é executada automaticamente pelo GitHub Actions em
+`.github/workflows/ci.yml` para cada push na branch `master` e para cada pull
+request. O workflow instala as dependências, obtém os dados de teste, roda as
+três etapas do pipeline, executa o Ruff e roda o Pytest.
 
 Verificações manuais úteis:
 

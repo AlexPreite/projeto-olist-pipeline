@@ -183,6 +183,14 @@ poetry run python -m compileall pipeline ui.py app.py tests
 Os testes verificam a existência das camadas, a preservação das contagens,
 os tipos da camada `raw` e a presença de dados nos marts.
 
+O GitHub Actions executa automaticamente, em cada push e pull request:
+
+1. instalação das dependências;
+2. obtenção dos dados de teste;
+3. ingestão, transformação e marts;
+4. Ruff;
+5. suíte completa de testes de qualidade.
+
 ## Estrutura do projeto
 
 ```text
