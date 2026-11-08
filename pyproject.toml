@@ -1,0 +1,24 @@
+[project]
+name = "projeto-python"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "AlexPreite",email = "82426665+AlexPreite@users.noreply.github.com"}
+]
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "duckdb (>=2.0.0,<3.0.0)",
+    "pandas (>=3.1.1,<4.0.0)",
+    "streamlit (>=1.67.0,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.2.0,<10.0.0)",
+    "ruff (>=0.17.4,<0.18.0)"
+]

@@ -1,0 +1,18 @@
+# Ambiente Python e ferramentas locais
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# Configurações/metadados locais
+.sf/
+.vscode/
+
+# Dados brutos e banco gerado
+raw/
+olist.duckdb
+
+# Relatórios e arquivos temporários
+*.pyc
+*.pyo
+*.log
